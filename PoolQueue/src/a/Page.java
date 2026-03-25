@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.CardLayout;
-import java.awt.Component;
 	
 public class Page extends JFrame {
 
@@ -16,6 +15,8 @@ public class Page extends JFrame {
 	public boolean[] isTableBooked = {false, false, false, false, false, false, false, false, false, false};
 	public int currentSelectedTable = -1;
 	public TableSelection tablePage;
+	public Data data;
+	public static int price = 0;
 	
 	public static class User {
 	    private String name;
@@ -75,14 +76,13 @@ public class Page extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setLayout(cardLayout);
     	setContentPane(contentPane);
-    	Register register = new Register(cardLayout, contentPane, this);
-    	contentPane.add(register, "register");
-    	contentPane.add(new Login(cardLayout, contentPane, this), "login");
+    	contentPane.add(new Register(cardLayout, contentPane, this), "Register");
+    	contentPane.add(new Login(cardLayout, contentPane, this), "Login");
     	tablePage = new TableSelection(cardLayout, contentPane, this);
     	contentPane.add(tablePage, "TableSelection");
     	contentPane.add(new Data(cardLayout, contentPane, this), "Data");
     	contentPane.add(new Payment(cardLayout, contentPane, this), "Payment");
-    	cardLayout.show(contentPane, "register");
+    	cardLayout.show(contentPane, "Register");
 	}
 
 }
