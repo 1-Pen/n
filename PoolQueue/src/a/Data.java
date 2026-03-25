@@ -16,10 +16,7 @@ public class Data extends JPanel {
 	private JTextField txtName;
     private JComboBox<String> cbHours;
     private JComboBox<String> cbGuests;
-    private Page main;
-
     public Data(CardLayout layout, JPanel container, Page main) {
-        this.main = main;
         setLayout(null);
         
         JLabel lblTitle = new JLabel("Fill in the form");
@@ -65,7 +62,7 @@ public class Data extends JPanel {
             }
         });
         add(btnBack);
-
+        
         JButton btnConfirm = new JButton("Enter");
         btnConfirm.setBounds(100, 200, 200, 40);
         btnConfirm.addActionListener(new ActionListener() {
@@ -75,17 +72,24 @@ public class Data extends JPanel {
 
                     JOptionPane.showMessageDialog(Data.this, "Please fill everything in form", "Alert", JOptionPane.WARNING_MESSAGE);
                 } else {
-                	layout.show(container, "Payment");
-
-                    String name = txtName.getText();
-                    String hour = (String) cbHours.getSelectedItem();
+                	String selectedStr = cbHours.getSelectedItem().toString();
+                	
+                	String name = txtName.getText();
+                    int hour = Integer.parseInt(selectedStr);
                     String guests = (String) cbGuests.getSelectedItem();
+
+                    Page.price = hour *100;
+                    Payment.updateData();
                     
                     System.out.println("--- information ---");
                     System.out.println("name: " + name);
                     System.out.println("Hour: " + hour);
                     System.out.println("Person: " + guests);
-                }
+                
+                	
+                	layout.show(container, "Payment");
+
+                }    
             }
         });
         add(btnConfirm);
