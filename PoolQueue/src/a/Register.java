@@ -36,7 +36,7 @@ public class Register extends JPanel {
 		JButton toLogin = new JButton("Already have an account?");
 		toLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				layout.show(container, "login");
+				layout.show(container, "Login");
 			}
 		});
 		toLogin.setBounds(132, 231, 185, 20);
@@ -47,7 +47,7 @@ public class Register extends JPanel {
 		lblNewLabel.setBounds(130, 32, 185, 25);
 		add(lblNewLabel);
 		
-		txtUsername = new JTextField("Enter Name...");
+		txtUsername = new JTextField();
 		txtUsername.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusGained(FocusEvent e) {
@@ -96,15 +96,20 @@ public class Register extends JPanel {
 				String password = new String(passwordField.getPassword());
 				String confirmPassword = new String(confirmPasswordField.getPassword());
 				
-				if(confirmPassword.equals(password)) {
-					Page.User ud = new Page.User(txtUsername.getText(), password);
-					main.addUser(ud);
-					JOptionPane.showMessageDialog(null, "Account created");
-					layout.show(container, "login");
+				if(txtUsername.getText().equals("Enter Name...")) 
+                    JOptionPane.showMessageDialog(Register.this, "Please fill everything in form", "Alert", JOptionPane.WARNING_MESSAGE);
+				else {
+					if(confirmPassword.equals(password)) {
+						Page.User ud = new Page.User(txtUsername.getText(), password);
+						main.addUser(ud);
+						JOptionPane.showMessageDialog(null, "Account created");
+						layout.show(container, "Login");
+					}
+					else
+						JOptionPane.showMessageDialog(null, "Password doesn't match");
 				}
-				else
-					JOptionPane.showMessageDialog(null, "Password doesn't match");
 			}
+				
 		});
 		registerbtn.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		registerbtn.setBounds(162, 193, 116, 25);
