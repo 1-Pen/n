@@ -73,8 +73,7 @@ public class Page extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setLayout(cardLayout);
     	setContentPane(contentPane);
-    	Register register = new Register(cardLayout, contentPane, this);
-    	contentPane.add(register, "register");
+    	contentPane.add(new Register(cardLayout, contentPane, this), "register");
     	contentPane.add(new Login(cardLayout, contentPane, this), "login");
     
     // Show the starting page
