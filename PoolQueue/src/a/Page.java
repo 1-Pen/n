@@ -75,6 +75,9 @@ public class Page extends JFrame {
     	setContentPane(contentPane);
     	contentPane.add(new Register(cardLayout, contentPane, this), "register");
     	contentPane.add(new Login(cardLayout, contentPane, this), "login");
+		contentPane.add(new TableSelection(cardLayout, contentPane, this), "tableSelection");
+		contentPane.add(new Payment(cardLayout, contentPane, this), "payment");
+		contentPane.add(new Data(cardLayout, contentPane, this), "data");
     
     // Show the starting page
     	cardLayout.show(contentPane, "register");
