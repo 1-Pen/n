@@ -32,7 +32,7 @@ public class Login extends JPanel {
 		JButton btnNewButton = new JButton("Create an account..");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				layout.show(container, "register");
+				layout.show(container, "Register");
 			}
 		});
 		btnNewButton.setBounds(154, 220, 142, 20);
@@ -75,7 +75,7 @@ public class Login extends JPanel {
 		    	 String pass = new String(passwordField.getPassword());
 			        if (main.checkLogin(txtUsername.getText(), pass)) {
 			        	JOptionPane.showMessageDialog(null, "Done");
-			            layout.show(container, "tableSelection");
+			            layout.show(container, "TableSelection");
 			        }
 			        else 
 			            JOptionPane.showMessageDialog(null, "Invalid Name or Password!");
@@ -85,6 +85,8 @@ public class Login extends JPanel {
 		btnLogIn.setBounds(165, 175, 116, 25);
 		add(btnLogIn);
 
+	}
+}
 	}
 
 	
