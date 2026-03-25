@@ -6,13 +6,16 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.CardLayout;
-
+import java.awt.Component;
+	
 public class Page extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private CardLayout cardLayout = new CardLayout();
-	
+	public boolean[] isTableBooked = {false, false, false, false, false, false, false, false, false, false};
+	public int currentSelectedTable = -1;
+	public TableSelection tablePage;
 	
 	public static class User {
 	    private String name;
@@ -35,12 +38,13 @@ public class Page extends JFrame {
 	
 	private ArrayList<User> registeredUsers = new ArrayList<>();
 
+
     public boolean checkLogin(String name, String password) {
         for (User i : registeredUsers) {
             if (i.getName().equals(name) && i.getPassword().equals(password)) 
-                return true; // Match found
+                return true;
         }
-        return false; // No match
+        return false;
     }
     
     public void addUser(User u) {
@@ -61,25 +65,23 @@ public class Page extends JFrame {
 				}
 			}
 		});
+		
 	}
 
-	/**
-	 * Create the frame.
-	 */
+
 	public Page() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 460, 300);
-    // This is the "Deck of Cards"
 		contentPane = new JPanel();
 		contentPane.setLayout(cardLayout);
     	setContentPane(contentPane);
-    	contentPane.add(new Register(cardLayout, contentPane, this), "register");
+    	Register register = new Register(cardLayout, contentPane, this);
+    	contentPane.add(register, "register");
     	contentPane.add(new Login(cardLayout, contentPane, this), "login");
-		contentPane.add(new TableSelection(cardLayout, contentPane, this), "tableSelection");
-		contentPane.add(new Payment(cardLayout, contentPane, this), "payment");
-		contentPane.add(new Data(cardLayout, contentPane, this), "data");
-    
-    // Show the starting page
+    	tablePage = new TableSelection(cardLayout, contentPane, this);
+    	contentPane.add(tablePage, "TableSelection");
+    	contentPane.add(new Data(cardLayout, contentPane, this), "Data");
+    	contentPane.add(new Payment(cardLayout, contentPane, this), "Payment");
     	cardLayout.show(contentPane, "register");
 	}
 
