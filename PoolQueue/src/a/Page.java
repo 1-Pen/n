@@ -15,8 +15,9 @@ public class Page extends JFrame {
 	public boolean[] isTableBooked = {false, false, false, false, false, false, false, false, false, false};
 	public int currentSelectedTable = -1;
 	public TableSelection tablePage;
+	public Payment payment;
 	public Data data;
-	public static int price = 0;
+	public int price = 0;
 	
 	public static class User {
 	    private String name;
@@ -81,7 +82,8 @@ public class Page extends JFrame {
     	tablePage = new TableSelection(cardLayout, contentPane, this);
     	contentPane.add(tablePage, "TableSelection");
     	contentPane.add(new Data(cardLayout, contentPane, this), "Data");
-    	contentPane.add(new Payment(cardLayout, contentPane, this), "Payment");
+    	payment = new Payment(cardLayout, contentPane, this);
+    	contentPane.add(payment, "Payment");
     	cardLayout.show(contentPane, "Register");
 	}
 
