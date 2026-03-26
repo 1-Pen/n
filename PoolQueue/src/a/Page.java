@@ -17,7 +17,7 @@ public class Page extends JFrame {
 	public TableSelection tablePage;
 	public Payment payment;
 	public Data data;
-	public int price = 0;
+	public int price;
 	
 	public static class User {
 	    private String name;
