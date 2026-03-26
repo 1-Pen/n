@@ -12,9 +12,9 @@ public class Page extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private CardLayout cardLayout = new CardLayout();
+	public TableSelection tablePage;
 	public boolean[] isTableBooked = {false, false, false, false, false, false, false, false, false, false};
 	public int currentSelectedTable = -1;
-	public TableSelection tablePage;
 	public Payment payment;
 	public Data data;
 	public int price;
