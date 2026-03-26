@@ -15,12 +15,14 @@ import java.io.File;
 
 public class Payment extends JPanel {
 	private static JLabel lblPrice;
-	public static void updateData() {
+	private Page main;
+	public void updateData() {
 		
-		lblPrice.setText(String.format("Total: %d Baht", Page.price));
+		lblPrice.setText(String.format("Total: %d Baht", main.price));
     }
 
     public Payment(CardLayout layout, JPanel container, Page main) {
+    	this.main = main;
         setLayout(null);
 
         lblPrice = new JLabel("", SwingConstants.CENTER);
