@@ -16,7 +16,10 @@ public class Data extends JPanel {
 	private JTextField txtName;
     private JComboBox<String> cbHours;
     private JComboBox<String> cbGuests;
+    private Page main;
+    
     public Data(CardLayout layout, JPanel container, Page main) {
+    	this.main = main;
         setLayout(null);
         
         JLabel lblTitle = new JLabel("Fill in the form");
@@ -78,8 +81,8 @@ public class Data extends JPanel {
                     int hour = Integer.parseInt(selectedStr);
                     String guests = (String) cbGuests.getSelectedItem();
 
-                    Page.price = hour *100;
-                    Payment.updateData();
+                    main.price = hour *100;
+                    main.payment.updateData();
                     
                     System.out.println("--- information ---");
                     System.out.println("name: " + name);
